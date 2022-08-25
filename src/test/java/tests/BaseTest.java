@@ -27,7 +27,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp()    {
-        driver = WebDriverManager.chromiumdriver().create();
+        driver = WebDriverManager.chromedriver().create();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(ConfProperties.getProperty("mainPage"));
