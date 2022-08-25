@@ -8,8 +8,8 @@
         <classes>
             <class name="tests.waiter.WaiterOrderStatusTest">
             </class>
-            <class name="tests.moderator.ModeratorRestaurantStatusTest">
-            </class>
+            <!--<class name="tests.moderator.ModeratorRestaurantStatusTest">
+            </class>-->
             <class name="tests.moderator.ModeratorClientStatusTest">
             </class>
             <class name="tests.moderator.ModeratorOwnerStatusTest">
