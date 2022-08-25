@@ -11,10 +11,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -22,19 +19,8 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
         
-    - name: Install Google Chrome # Using shell script to install Google Chrome
-      run: |
-       chmod +x ./scripts/InstallChrome.sh
-        ./scripts/InstallChrome.sh
+    - uses: browser-actions/setup-chrome@latest
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
