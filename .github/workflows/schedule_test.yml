@@ -28,7 +28,9 @@ jobs:
     - name: Build with Maven
       run: mvn clean test
 
-    - uses: actions/upload-artifact@v3
+    - name: Deploy report
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: my-artifact
-        path: ./src/test/reports
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./src/test/reports
+          keep_files: true
